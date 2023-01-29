@@ -1,0 +1,4 @@
+{"postcodeA":"WC1N", "postcodeB":"HA5"}?{"travelTime": 1200, "timeMS":1675017000}
+{"postcodeA":"WC1N", "postcodeB":"HA2"}?{"travelTime": 1200, "timeMS":1675017000}
+{"postcodeA":"HA2", "postcodeB":"WC1N"}?{"travelTime": 1200, "timeMS":1675017000}
+{"postcodeA":"HA5", "postcodeB":"WC1N"}?{"travelTime": 1200, "timeMS":1675017000}
