@@ -1,12 +1,12 @@
 How To Guide
 Step 1
 Produce Reference data
-./bin/kafka-console-producer --bootstrap-server localhost:9092 --topic referenceTimeTopic --property parse.key=true --property key.separator=? < /home/sami/dotnetProjects/kafka-dotnet-getting-started/Project2023/ProtoType/DataGenerator/input_referenceTimeTopic.json
+./bin/kafka-console-producer --bootstrap-server localhost:9092 --topic referenceTimeTopic --property parse.key=true --property key.separator=? < /home/zeyad/ProtoType/DataGenerator/input_referenceTimeTopic.json
 [2023-01-29 19:20:18,031] WARN [Producer clientId=console-producer] Error while fetching metadata with correlation id 1 : {referenceTimeTopic=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
 
 Step 2
 Produce source data
-./bin/kafka-console-producer --bootstrap-server localhost:9092 --topic sourceDataTopic < /home/sami/dotnetProjects/kafka-dotnet-getting-started/Project2023/ProtoType/DataGenerator/input_sourceDataTopic.json
+./bin/kafka-console-producer --bootstrap-server localhost:9092 --topic sourceDataTopic < /home/zeyad/ProtoType/DataGenerator/input_sourceDataTopic.json
 [2023-01-29 18:54:04,399] WARN [Producer clientId=console-producer] Error while fetching metadata with correlation id 1 : {sourceDataTopic=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
 
 Step 3
