@@ -9,8 +9,11 @@ const cors = require('cors');
 
 const consumer = new Consumer(
   client,
-  [{ topic: 'alert5' ,partition: 0, offset: 0 }],
-  { fromOffset: true }
+ // [{ topic: 'alert5' ,partition: 0, offset: 0 }],
+ // { fromOffset: true }
+    [{ topic: 'alert5' }],
+    { autoCommit: true }
+
 );
 
 
@@ -25,7 +28,8 @@ app.use(cors({
 app.get('/stream/example', (req, res) => {
   consumer.on('message', function (message) {
     const value = JSON.parse(message.value);
-    const data= {id: message.offset, type: value.type, breachType: value.breachType, reason: value.reason, phone: value.phone, email: value.email}
+    //const data= {id: message.offset, type: value.type, breachType: value.breachType, reason: value.reason, phone: value.phone, email: value.email}
+    const data= {id: message.offset, type: value.ALERT_TYPE, breachType: value.BREACH_TYPE, reason: value.BREACH_TYPE}
     res.write(`${JSON.stringify(data)}`);
     res.end()
   });
