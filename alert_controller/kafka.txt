@@ -1,0 +1,27 @@
+kafka depends on zookeeper for different functionalitites like storing of metadata etc
+kafka container and zookeeper container are connected
+external env connect to these container through ports
+
+npm install kafka
+docker-compose -f docker-compose.yaml up -d
+docker exec -it kafka /bin/sh
+ls
+cd /opt/
+cd kafka
+
+./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic example
+./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic close-alert
+the above line creates topic
+./bin/kafka-topics.sh --list --zookeeper zookeeper:2181
+
+once producer is created
+bin/kafka-console-consumer.sh \
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic example --from-beginning
+
+
+Dependencies:
+use either kofka-node or kafkajs. I am using both
+npm i kafkajs 
+
+
+

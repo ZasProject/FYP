@@ -1,0 +1,32 @@
+{
+  "$id": "https://example.com/alert.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Alert",
+  "type": "object",
+  "properties": {
+    "AlertID": {
+      "type": "string",
+      "description": "Alert ID"
+    },
+    "AlertDetail": {
+      "type": "string",
+      "description": "Details of The Alert."
+    },
+    "Alert_Type": {
+      "description": "Alert Types",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Suspicious Account Activity", "Money Laundering"]
+      }
+    },
+    "Breach_Type": {
+      "description": "Breach Types",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Multiple Unusual Transactions", "Restricted Country"]
+      }
+    }
+  }
+}

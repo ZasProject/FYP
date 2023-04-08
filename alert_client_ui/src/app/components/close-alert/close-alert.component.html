@@ -1,0 +1,37 @@
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Alert ID</th>
+        <th scope="col">Alert Type</th>
+        <th scope="col">Breach Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alert of selectedAlert">
+        <th scope="row">
+          <label>{{ alert.id}}</label>
+        </th>
+        <td>
+          {{ alert.type }}
+        </td>
+        <td>{{ alert.breachType }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <div class="row">
+      <div class="col-md-5" *ngFor="let options of customerVerificationOptions">
+        <!-- [checked] attribute lets the input that were selected on the previous screen remain checked  , diabled attr disables the checkboxes from editing on close alerts page -->
+        <div class='alert-details'><input type="checkbox" name="customerVerificationOptions" [value]="options.value" [checked]="options.isSelected" disabled>{{options.value}}</div>
+      </div>
+      <div class="col-md-2">
+        <label>Officer Comments:</label>
+        <textarea></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="float: right; margin: 1em">
+  <button (click)="closeAlert()">Close</button>
+</div>

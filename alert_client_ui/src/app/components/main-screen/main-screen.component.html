@@ -1,0 +1,37 @@
+
+  <div>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Alert ID</th>
+          <th scope="col">Alert Type</th>
+          <th scope="col">Breach Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- loops through all the alerts received from the get api -->
+        <tr *ngFor="let alert of receivedData">
+          <th scope="row">
+            <!-- creates checkbox for each alert next to the alert id -->
+            <input type="checkbox" (click)="selectAlert($event, alert.id)"> <label>{{  alert.id }}</label></th>
+          <td>
+            <!-- displays type in alert type column -->
+            {{ alert.type }}
+          </td>
+          <!-- displays breach type in Breach Type column -->
+          <td>{{ alert.breachType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <!-- [disabled] tells to disable if multiple rows selected -->
+    <button [disabled]="selectedRows.length > 1" (click)="action()">Compliance Officer Action</button>
+    <!-- [disabled] tells to disable if multiple rows selected -->
+    <button [disabled]="selectedRows.length > 1" (click)="forward()">Forward to Compliance Manager</button>
+    <!-- [disabled] tells to disable if single row is selected -->
+    <button [disabled]="selectedRows.length === 1" (click)="close()">Bulk Close</button>
+  </div>
+</div>
+
