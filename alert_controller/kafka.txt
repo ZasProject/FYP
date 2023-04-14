@@ -10,7 +10,9 @@ cd /opt/
 cd kafka
 
 ./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic example
-./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic close-alert
+./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic 
+./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic compliance-manager-alert
+-alert
 the above line creates topic
 ./bin/kafka-topics.sh --list --zookeeper zookeeper:2181
 
