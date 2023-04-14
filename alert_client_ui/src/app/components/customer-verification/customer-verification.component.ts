@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ALERTS } from 'src/app/constants/alerts';
 
 @Component({
   selector: 'app-customer-verification',
@@ -8,8 +7,6 @@ import { ALERTS } from 'src/app/constants/alerts';
   styleUrls: ['./customer-verification.component.css'],
 })
 export class CustomerVerificationComponent implements OnInit {
-  alerts: any[];
-  selectedRowId: number;
   selectedAlert: any[] = [];
 
   customerVerificationOptions = [
@@ -43,6 +40,9 @@ export class CustomerVerificationComponent implements OnInit {
     });
     // store it in the selectedAlert array in action taken field so that it can be passed to the next page via query params
     this.selectedAlert[0].actionTaken = actionTaken;
+    const comments =
+      (document.getElementById('comments') as HTMLTextAreaElement).value || '';
+    this.selectedAlert[0].comments = comments;
     const selectedData = this.selectedAlert[0];
     const data = JSON.stringify(selectedData);
     //navigate to close alert page

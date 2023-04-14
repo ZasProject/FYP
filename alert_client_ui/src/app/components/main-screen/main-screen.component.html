@@ -10,6 +10,11 @@
         </tr>
       </thead>
       <tbody>
+        <tr *ngIf="!receivedData.length">
+          <td>Fetching...</td>
+          <td>Fetching...</td>
+          <td>Fetching...</td>
+        </tr>
         <!-- loops through all the alerts received from the get api -->
         <tr *ngFor="let alert of receivedData">
           <th scope="row">
@@ -29,7 +34,7 @@
     <!-- [disabled] tells to disable if multiple rows selected -->
     <button [disabled]="selectedRows.length > 1" (click)="action()">Compliance Officer Action</button>
     <!-- [disabled] tells to disable if multiple rows selected -->
-    <button [disabled]="selectedRows.length > 1" (click)="forward()">Forward to Compliance Manager</button>
+    <button [disabled]="selectedRows.length > 1" (click)="forwardToComplianceManager()">Forward to Compliance Manager</button>
     <!-- [disabled] tells to disable if single row is selected -->
     <button [disabled]="selectedRows.length === 1" (click)="close()">Bulk Close</button>
   </div>

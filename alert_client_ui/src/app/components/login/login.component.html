@@ -1,0 +1,20 @@
+<div class='login-container'>
+  <div class="input-field">
+    <label for='userName'>User Name: </label>
+    <input id="userName" type="text">
+  </div>
+  <br>
+  <div class="input-field">
+    <label for="password">Password: </label>
+    <input id="password" type="password">
+  </div>
+  <br>
+  <div class="input-field">
+    <label for="userType">User Type:</label>
+    <select (change)="onSelect($event)">
+      <option value="compliance-officer">Compliance Officer</option>
+      <option value="compliance-manager">Compliance Manager</option>
+    </select>
+  </div><br>
+  <button type="submit" (click)="login()">Login</button>
+</div>

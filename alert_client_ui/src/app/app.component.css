@@ -1,3 +1,29 @@
 .outer-container {
   margin: 5em;
+  border: 1px solid #dadada;
+  padding: 2em;
+  background-color: #faf8f8f1;
+  min-height: 25em;
+}
+
+.header-content {
+  text-align: center;
+  background-color: #c9c3c3;
+  vertical-align: middle;
+  font-size: 1em;
+}
+
+.sub-header {
+  background-color: #f1eaea;
+  width: 100%;
+}
+
+.welcome-text {
+  padding-left: 1em;
+  width: 100%;
+}
+
+.current-date {
+  float: right;
+  padding-right: 1em;
 }

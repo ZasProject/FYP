@@ -21,16 +21,11 @@
   </table>
   <div>
     <div class="row">
-      <div class="col-md-5" *ngFor="let options of customerVerificationOptions">
-        <div class='alert-details'><input type="checkbox" name="customerVerificationOptions" [value]="options.value">{{options.value}}</div>
-      </div>
-      <div class="col-md-2">
         <label>Officer Comments:</label>
         <textarea id="comments"></textarea>
-      </div>
     </div>
   </div>
 </div>
 <div style="float: right; margin: 1em">
-  <button (click)="next()">Next</button>
+  <button (click)="close()">Close</button>
 </div>

@@ -9,6 +9,8 @@ import { ComplianceOfficerActionComponent } from './components/compliance-office
 import { CustomerVerificationComponent } from './components/customer-verification/customer-verification.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CloseAlertComponent } from './components/close-alert/close-alert.component';
+import { BulkCloseComponent } from './components/bulk-close/bulk-close.component';
+import { ComplianceManagerActionComponent } from './components/compliance-manager-action/compliance-manager-action.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CloseAlertComponent } from './components/close-alert/close-alert.compon
     ComplianceOfficerActionComponent,
     CustomerVerificationComponent,
     CloseAlertComponent,
+    BulkCloseComponent,
+    ComplianceManagerActionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   bootstrap: [AppComponent],

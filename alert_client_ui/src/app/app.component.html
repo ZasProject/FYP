@@ -1,7 +1,14 @@
 
 <div class="outer-container">
-  <div style="text-align: center">
-    <b>Alert Management System</b>
+  <div >
+    <div class="header-content">
+      <b>Alert Management System</b>
+    </div>
+    <div class="sub-header">
+      <span *ngIf="userName" class="welcome-text">User: {{userName}} ({{userType}})</span>
+      <span class='current-date'>DateTime: {{getDate() | date:"dd-MMM-yyyy HH:mm:ss"}}</span>
+    </div>
   </div>
+  <br>
 <router-outlet></router-outlet>
 </div>

@@ -1,15 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertsStreamService {
-  alerts = new Subject<any[]>();
-  private readonly unsubscribe$ = new Subject<void>();
-
-  constructor(private http: HttpClient) {}
+  private alerts = new Subject<any[]>();
+  private bulkCloseAlerts = new BehaviorSubject<any[]>([
+    { id: 'Loading...', type: 'Loading...', breachType: 'Loading...' },
+  ]);
 
   setAlerts(alerts: any) {
     this.alerts.next(alerts);
@@ -19,8 +18,11 @@ export class AlertsStreamService {
     return this.alerts;
   }
 
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
+  setAlertsToBulkClose(alerts: any) {
+    this.bulkCloseAlerts.next(alerts);
+  }
+
+  getAlertsToBulkClose() {
+    return this.bulkCloseAlerts;
   }
 }

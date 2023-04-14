@@ -1,0 +1,12 @@
+label {
+  margin-right: 1em;
+  width: 6em;
+}
+
+.login-container {
+  border: 2px solid orange;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
