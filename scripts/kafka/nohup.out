@@ -1,0 +1,6 @@
+[2023-04-15 19:14:16,601] ERROR Failed to start KSQL (io.confluent.ksql.rest.server.KsqlServerMain:96)
+io.confluent.ksql.util.KsqlException: Failed to load properties file: /home/zeyad/kafka/confluent-7.3.3/logs/ksql-server.log
+	at io.confluent.ksql.properties.PropertiesUtil.loadPropsFromFile(PropertiesUtil.java:157)
+	at io.confluent.ksql.properties.PropertiesUtil.loadProperties(PropertiesUtil.java:94)
+	at io.confluent.ksql.rest.server.KsqlServerMain.lambda$main$0(KsqlServerMain.java:64)
+	at io.confluent.ksql.rest.server.KsqlServerMain.main(KsqlServerMain.java:67)

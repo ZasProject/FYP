@@ -29,8 +29,8 @@ app.use(cors({
 app.get('/stream/example', (req, res) => {
   consumer.on('message', function (message) {
     const value = JSON.parse(message.value);
-    const data= {id: message.offset, type: value.type, breachType: value.breachType, reason: value.reason, phone: value.phone, email: value.email}
-    // const data= {id: message.offset, type: value.ALERT_TYPE, breachType: value.BREACH_TYPE, reason: value.BREACH_TYPE}
+    //const data= {id: message.offset, type: value.type, breachType: value.breachType, reason: value.reason, phone: value.phone, email: value.email}
+    const data= {id: message.offset, type: value.ALERT_TYPE, breachType: value.BREACH_TYPE, reason: value.BREACH_TYPE}
     res.write(`${JSON.stringify(data)}`);
     res.end()
   });
@@ -62,6 +62,8 @@ app.post('/ams/closeAlert', (req,res) => {
     });
   });
 })
+
+
 
 //Create a new kafka client to listen on the 'compliance-manager-alert' topic
 const complianceManagerAlertsClient = new kafka.KafkaClient({ kafkaHost: 'localhost:9092' });
@@ -110,6 +112,9 @@ app.get('/stream/complianceManagerAlerts', (req, res) => {
     res.end()
   });
 })
+
+
+
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');
