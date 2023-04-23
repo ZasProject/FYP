@@ -1,0 +1,1 @@
+/home/zeyad/kafka/confluent-7.3.3/bin/kafka-console-producer --bootstrap-server localhost:9092 --topic countryReferenceTopic --property parse.key=true --property key.separator=? < /home/zeyad/ams/data_feed/data_generator/case2/country.json

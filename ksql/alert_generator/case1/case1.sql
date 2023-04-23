@@ -1,0 +1,16 @@
+/* Sample source data
+ * We are using transaction data to prototype a scenario where a card is used at two places in consecutive transactions
+ * in a certain amount of time which is not possible to travel in terms of distance.
+ * In real world you have map tools and API to calculate distance. However this is outside of the scope of this project.
+ * We will use a reference table with pre-defined time factors for distance.
+*/
+
+set 'auto.offset.reset'='earliest';
+
+create stream sourceData(transactionId string, accountId string, cardId string, txTime bigint, amount double, TxPostcode string, TxCountry string) with (kafka_topic='sourceDataTopic', partitions=1, value_format='json'); 
+
+create table referenceTime(postcodes struct<postcodeA string, postcodeB string> primary key, travelTime bigint) with(kafka_topic='referenceTimeTopic', partitions=1, value_format='json', key_format='json');
+
+create table cardUsageDistance as select cardId, latest_by_offset(transactionId) transactionId, latest_by_offset(accountId) accountId, latest_by_offset(txTime) txTime, latest_by_offset(amount) amount, latest_by_offset(TxPostcode) TxPostcode, (case when array_length(collect_list(TxPostcode)) > 1 then collect_list(TxPostcode)[array_length(collect_list(TxPostcode)) - 2] else null end) as TxPostcodePrev, latest_by_offset(txTime) - (case when array_length(collect_list(txTime)) > 1 then collect_list(txTime)[array_length(collect_list(txTime)) - 2] else cast(0 as bigint) end) as travelTime from sourceData group by cardId emit changes;
+
+create table alert with (kafka_topic='alert') as select concat(transactionId,cardId,accountId) alertID, 'Suspicious Account Activity' Alert_Type, 'Multiple Unusual Transactions' Breach_Type, cardId, transactionId, accountId, amount, TxPostcode from cardUsageDistance lhs join referenceTime rhs on struct(postcodeA:=split(lhs.TxPostcode,' ')[1], postcodeB:=split(lhs.TxPostcodePrev,' ')[1]) = postcodes where lhs.travelTime < rhs.travelTime emit changes;

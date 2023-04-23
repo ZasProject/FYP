@@ -1,0 +1,4 @@
+{"transactionId":"123456789","accountId":"34567654","cardId":"1234432123455432","txTime":1675017875, "amount":124.54, "TxPostcode": "HA5 2BX", "TxCountry":"UK"}
+{"transactionId":"123456790","accountId":"34567654","cardId":"1234432123455432","txTime":1675018654, "amount":124.54, "TxPostcode": "HA5 3YZ", "TxCountry":"UK"}
+{"transactionId":"123456791","accountId":"34567654","cardId":"1234432123455432","txTime":1675018655, "amount":124.54, "TxPostcode": "WC1N 3YZ", "TxCountry":"UK"}
+{"transactionId":"123456792","accountId":"34567656","cardId":"1234432123455437","txTime":1675018655, "amount":124.54, "TxPostcode": "HA2 3YZ", "TxCountry":"UK"}
