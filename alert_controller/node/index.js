@@ -77,6 +77,7 @@ const complianceManagerGenerator = new Consumer(
 );
 
 app.post('/ams/forwardToComplianceManager', (req,res) => {
+  console.log('Here 1')
   let body = '';
   req.on('data', (chunk) => {
     body += chunk;
@@ -106,7 +107,8 @@ app.post('/ams/forwardToComplianceManager', (req,res) => {
 app.get('/stream/complianceManagerAlerts', (req, res) => {
   complianceManagerGenerator.on('message', function (message) {
     const value = JSON.parse(message.value);
-    const data= {id: message.offset, type: value.type, breachType: value.breachType, reason: value.reason, phone: value.phone, email: value.email}
+    const data= {id: message.offset, type: value.type, breachType: value.breachType}
+    //const data= {id: message.offset, type: value.type, breachType: value.breachType, reason: value.reason, phone: value.phone, email: value.email}
     // const data= {id: message.offset, type: value.ALERT_TYPE, breachType: value.BREACH_TYPE, reason: value.BREACH_TYPE}
     res.write(`${JSON.stringify(data)}`);
     res.end()
